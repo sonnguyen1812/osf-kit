@@ -31,7 +31,7 @@ Trong TUI (hai bước, marketplace chưa có sẵn):
 Gọi:
 
 - Claude Code: `/osf:osf list` · `/osf:feat …`
-- OMP: `/osf list` · `/osf feat …`
+- OMP: `/skill:osf list` · `/skill:osf feat …`
 
 ## Notes
 
@@ -46,7 +46,6 @@ Gọi:
 .claude-plugin/{plugin.json,marketplace.json}
 .omp-plugin/{plugin.json,marketplace.json}
 package.json                 pi.skills + omp.skills → ./skills
-commands/osf.md
 skills/<name>/SKILL.md
 agents/osf-*.md
 references/host.md
