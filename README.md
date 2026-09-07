@@ -21,15 +21,16 @@ Claude TUI (marketplace chưa có):
 /plugin install osf@osf-kit
 ```
 
-OMP: **restart session** sau khi cài (extension mới mới vào `/extensions` và `/osf`).
+OMP: **restart session** sau khi cài. Tắt **OMP Extension Packages** thì skill OSF biến mất (giống Superpowers).
 
 - Claude Code: `/osf:osf list` · `/osf:feat …`
-- OMP: `/osf list` · `/osf feat …`
+- OMP: `/skill:osf list` · `/skill:osf feat …` (`skills.enableSkillCommands`)
 
 ## Notes
 
-- Claude cần `marketplace.json` (catalog). OMP **không** dùng `/marketplace add` + `osf@osf-kit` — trùng plugin và trên máy này hay chết 443.
-- `/osf` trên OMP = `extensions/osf.ts`. Không copy skill vào `~/.claude/skills` / `~/.omp/agent/skills`.
+- Claude: catalog `marketplace.json`. OMP: `omp plugin install github:sonnguyen1812/osf-kit` — đừng `marketplace add` + `osf@osf-kit`.
+- OMP theo Superpowers: `.pi/extensions/osf.ts` chỉ `resources_discover` + label. **Không** `registerCommand`. Skill nằm `skills/<name>/SKILL.md`.
+- Không copy skill vào `~/.claude/skills` / `~/.omp/agent/skills`.
 - Windows: đừng `omp plugin link` (`EPERM`).
 
 ## Layout
@@ -37,8 +38,8 @@ OMP: **restart session** sau khi cài (extension mới mới vào `/extensions` 
 ```text
 .claude-plugin/{plugin.json,marketplace.json}
 .omp-plugin/{plugin.json,marketplace.json}
-package.json                 omp.extensions + omp.skills
-extensions/osf.ts            OMP: /osf + /extensions
+package.json                 type:module, omp.extensions, pi.extensions+skills
+.pi/extensions/osf.ts        Superpowers-style (no /osf slash)
 skills/<name>/SKILL.md
 agents/osf-*.md
 references/host.md
