@@ -1,0 +1,29 @@
+{
+  "name": "osf",
+  "version": "1.0.2",
+  "private": true,
+  "description": "OSF kit — OpenSpec-flow skills and agents for Claude Code and OMP",
+  "license": "MIT",
+  "keywords": [
+    "osf",
+    "openspec",
+    "skills",
+    "omp",
+    "claude-code"
+  ],
+  "omp": {
+    "skills": [
+      "./skills"
+    ]
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonnguyen1812/osf-kit.git"
+  },
+  "homepage": "https://github.com/sonnguyen1812/osf-kit"
+}
