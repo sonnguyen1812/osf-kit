@@ -10,35 +10,27 @@ Marketplace `osf-kit`, plugin `osf`, `source: "./"`.
 # Claude Code
 claude plugin marketplace add sonnguyen1812/osf-kit && claude plugin install osf@osf-kit
 
-# OMP (extension native: /extensions + /osf)
+# OMP
 omp plugin install github:sonnguyen1812/osf-kit
-
-# OMP marketplace (máy clone GitHub được)
-omp plugin marketplace add sonnguyen1812/osf-kit && omp plugin install osf@osf-kit
 ```
 
-Trong TUI (hai bước, marketplace chưa có sẵn):
+Claude TUI (marketplace chưa có):
 
 ```text
-# Claude Code
 /plugin marketplace add sonnguyen1812/osf-kit
 /plugin install osf@osf-kit
-
-# OMP
-/marketplace add sonnguyen1812/osf-kit
-/marketplace install osf@osf-kit
 ```
 
-`/reload-plugins` hoặc **restart session** (extension cần restart).
+OMP: **restart session** sau khi cài (extension mới mới vào `/extensions` và `/osf`).
 
-- Claude Code: `/osf:osf list` · `/osf:feat …` (plugin namespace)
-- OMP: `/osf list` · `/osf feat …` — hiện **OSF kit** trong `/extensions`
+- Claude Code: `/osf:osf list` · `/osf:feat …`
+- OMP: `/osf list` · `/osf feat …`
 
 ## Notes
 
-- OMP không kế thừa Claude Code app. Skill/agent đi qua plugin OMP; `/osf` là `registerCommand` trong `extensions/osf.ts`.
-- Không copy skill vào `~/.claude/skills` hay `~/.omp/agent/skills`.
-- Windows: đừng `omp plugin link` — symlink `EPERM`. Dùng `omp plugin install github:sonnguyen1812/osf-kit` nếu `marketplace add` timeout 443.
+- Claude cần `marketplace.json` (catalog). OMP **không** dùng `/marketplace add` + `osf@osf-kit` — trùng plugin và trên máy này hay chết 443.
+- `/osf` trên OMP = `extensions/osf.ts`. Không copy skill vào `~/.claude/skills` / `~/.omp/agent/skills`.
+- Windows: đừng `omp plugin link` (`EPERM`).
 
 ## Layout
 
