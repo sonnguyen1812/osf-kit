@@ -1,23 +1,18 @@
 {
   "name": "osf",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "type": "module",
   "description": "OSF kit — OpenSpec-flow skills and agents for Claude Code and OMP",
   "license": "MIT",
   "keywords": [
+    "pi-package",
     "osf",
     "openspec",
     "skills",
     "omp",
-    "claude-code",
-    "pi-package"
+    "claude-code"
   ],
-  "omp": {
-    "extensions": [
-      "./.pi/extensions/osf.ts"
-    ]
-  },
   "pi": {
     "extensions": [
       "./.pi/extensions/osf.ts"
