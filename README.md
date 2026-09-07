@@ -10,7 +10,10 @@ Marketplace `osf-kit`, plugin `osf`, `source: "./"`.
 # Claude Code
 claude plugin marketplace add sonnguyen1812/osf-kit && claude plugin install osf@osf-kit
 
-# OMP
+# OMP (extension native: /extensions + /osf)
+omp plugin install github:sonnguyen1812/osf-kit
+
+# OMP marketplace (máy clone GitHub được)
 omp plugin marketplace add sonnguyen1812/osf-kit && omp plugin install osf@osf-kit
 ```
 
@@ -26,26 +29,24 @@ Trong TUI (hai bước, marketplace chưa có sẵn):
 /marketplace install osf@osf-kit
 ```
 
-`/reload-plugins` hoặc session mới.
+`/reload-plugins` hoặc **restart session** (extension cần restart).
 
-Gọi:
-
-- Claude Code: `/osf:osf list` · `/osf:feat …`
-- OMP: `/skill:osf list` · `/skill:osf feat …`
+- Claude Code: `/osf:osf list` · `/osf:feat …` (plugin namespace)
+- OMP: `/osf list` · `/osf feat …` — hiện **OSF kit** trong `/extensions`
 
 ## Notes
 
-- Không copy skill vào `~/.claude/skills`. OMP discovery là `skills/<name>/SKILL.md` (không recursive); `enableClaudeUser` thường tắt.
-- Windows: đừng `omp plugin link` — symlink `EPERM`. Dùng marketplace install.
-- Agent frontmatter chỉ `name` + `description` (không `model: sonnet|opus`, không `color`).
-- Dual-host: `skills/osf/SKILL.md` + `references/host.md`. `/osf list` = KIT_CATALOG, không scan disk.
+- OMP không kế thừa Claude Code app. Skill/agent đi qua plugin OMP; `/osf` là `registerCommand` trong `extensions/osf.ts`.
+- Không copy skill vào `~/.claude/skills` hay `~/.omp/agent/skills`.
+- Windows: đừng `omp plugin link` — symlink `EPERM`. Dùng `omp plugin install github:sonnguyen1812/osf-kit` nếu `marketplace add` timeout 443.
 
 ## Layout
 
 ```text
 .claude-plugin/{plugin.json,marketplace.json}
 .omp-plugin/{plugin.json,marketplace.json}
-package.json                 pi.skills + omp.skills → ./skills
+package.json                 omp.extensions + omp.skills
+extensions/osf.ts            OMP: /osf + /extensions
 skills/<name>/SKILL.md
 agents/osf-*.md
 references/host.md
