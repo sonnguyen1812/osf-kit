@@ -26,6 +26,21 @@ Restart the OMP session after install.
 - Claude Code: `/osf:osf list` · `/osf:feat …`
 - OMP: `/skill:osf list` · `/skill:osf feat …`
 
+## Update
+
+```bash
+# Claude Code
+claude plugin marketplace update osf-kit
+claude plugin update osf@osf-kit
+
+# OMP (reinstall from git; same command as install)
+omp plugin install github:sonnguyen1812/osf-kit
+```
+
+Restart the OMP session after update. Claude Code: restart or `/reload-plugins`.
+
+Version is pinned in `plugin.json`. Bump it on every release or users will not get the new tree.
+
 ## Kit
 
 Planning: feat, fix, chore, refactor, perf, docs, test, ci, docker, setup
